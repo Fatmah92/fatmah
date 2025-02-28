@@ -1,0 +1,84 @@
+from datetime import date
+
+# Step 1: Create Objects
+
+# Create a Customer object
+customer = Customer("C001", "Noora", "noora@gmail.com", "0507592726", "Abu Dhabi", "securepassword")
+
+# Create an Order object
+order = Order("O001", date.today(), customer, "Shipped", 100.00, 5.00, 105.00, True)
+
+# Create Product objects
+product1 = Product("P001", "Laptop", 800.00, True, "Electronics", 2.5)
+product2 = Product("P002", "Mouse", 25.00, True, "Accessories", 0.2)
+
+# Create a Payment object
+payment = Payment("PAY001", 105.00, "Credit Card", "1234-5678-9876-5432", "123", "Completed", date.today(), "INV123")
+
+# Create a DeliveryStaff object
+delivery_staff = DeliveryStaff("D001", "Alice", "987-654-3210", "Out for delivery", "Van", "Warehouse")
+
+# Create a Delivery object
+delivery = Delivery("DEL001", order, date.today(), date.today(), "TRK123", "In Transit", "Standard")
+
+# Create an Admin object (optional, for the note's admin information)
+admin = Admin("A001", "Admin", "admin@example.com", "555-000-1111", "adminpass", "Manager")
+
+# Step 2: Generate Delivery Note
+
+def generate_delivery_note():
+    print("----------- Delivery Note -----------")
+    
+    # Customer Information
+    print(f"Customer Name: {customer.get_name()}")
+    print(f"Customer Email: {customer.get_email()}")
+    print(f"Customer Address: {customer.get_address()}")
+    print(f"Customer Phone: {customer.get_phone_number()}")
+    print("")
+
+    # Order Information
+    print(f"Order ID: {order.get_order_id()}")
+    print(f"Order Date: {order.get_order_date()}")
+    print(f"Order Status: {order.get_status()}")
+    print(f"Subtotal: AED {order.get_subtotal()}")
+    print(f"Taxes: AED {order.get_taxes()}")
+    print(f"Total Amount: AED {order.get_total_amount()}")
+    print(f"Discount Applied: {'Yes' if order.discount_applied else 'No'}")
+    print("")
+
+    # Product Information
+    print("Products Ordered:")
+    print(f"1. {product1.get_product_name()} - AED {product1.get_price()} - Stock Available: {product1.get_stock_availability()}")
+    print(f"2. {product2.get_product_name()} - AED {product2.get_price()} - Stock Available: {product2.get_stock_availability()}")
+    print("")
+
+    # Payment Information
+    print(f"Payment ID: {payment.get_payment_id()}")
+    print(f"Payment Amount: AED {payment.get_amount()}")
+    print(f"Payment Method: {payment.get_method()}")
+    print(f"Payment Status: {payment.transaction_status}")
+    print(f"Invoice Number: {payment.invoice_number}")
+    print("")
+
+    # Delivery Information
+    print(f"Delivery ID: {delivery.get_delivery_id()}")
+    print(f"Delivery Date: {delivery.get_delivery_date()}")
+    print(f"Estimated Arrival: {delivery.get_estimated_arrival()}")
+    print(f"Tracking Number: {delivery.get_tracking_number()}")
+    print(f"Delivery Status: {delivery.get_current_status()}")
+    print(f"Delivery Method: {delivery.get_delivery_method()}")
+    print("")
+
+    # Delivery Staff Information
+    print(f"Delivery Staff Name: {delivery_staff.get_name()}")
+    print(f"Staff Phone: {delivery_staff.get_phone_number()}")
+    print(f"Vehicle Type: {delivery_staff.get_vehicle_type()}")
+    print(f"Delivery Status: {delivery_staff.get_delivery_status()}")
+    print("")
+
+    # Admin Information (optional)
+    print(f"Admin: {admin.get_name()} (Role: {admin.get_role()})")
+    print("")
+
+# Step 3: Display the Delivery Note
+generate_delivery_note()
